@@ -6,3 +6,9 @@ for dir in logs tmp pid cache  env; do
 	mkdir -p $dir
 done
 
+JAVA_BINARIES=$(find /usr/java/* -name java) 
+
+for i in ${JAVA_BINARIES}
+do
+     setcap 'cap_net_bind_service=+ep' ${i}
+done
