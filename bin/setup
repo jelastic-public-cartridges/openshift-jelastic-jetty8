@@ -6,15 +6,15 @@ for dir in logs tmp pid cache  env; do
 	mkdir -p $dir
 done
 
-echo -e "$(find /usr -name libjli.so -printf "%h\n")" > /etc/ld.so.conf.d/java.conf ; \
-ldconfig
+#echo -e "$(find /usr -name libjli.so -printf "%h\n")" > /etc/ld.so.conf.d/java.conf ; \
+#ldconfig
 
 #JAVABIN=$(which java 2>/dev/null)
 #[ ! -z "$JAVABIN" ] && {
 #    setcap 'cap_net_bind_service=+ep' $(readlink -f "$JAVABIN")
 #}
 
-JAVA_BINARIES=$(find /usr/java/* -name java|grep -v jre) 
+JAVA_BINARIES=$(find /usr/java/* -name java) 
 
 for i in ${JAVA_BINARIES}
 do
