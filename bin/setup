@@ -14,7 +14,7 @@ ldconfig
 #    setcap 'cap_net_bind_service=+ep' $(readlink -f "$JAVABIN")
 #}
 
-JAVA_BINARIES=$(find /usr/java/* -name java) 
+JAVA_BINARIES=$(find /usr/java/* -name java|grep -v jre) 
 
 for i in ${JAVA_BINARIES}
 do
