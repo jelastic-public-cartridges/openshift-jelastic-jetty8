@@ -18,7 +18,6 @@ $SED -i  "s/-Xmx[0-9]*m/-Xmx${XMX}m/g"  $JETTY_START_SCRIPT;
 echo -e "$(find $(realpath /usr/java/latest) -name libjli.so -printf "%h\n")" > /etc/ld.so.conf.d/java.conf ; \
 ldconfig
 
-JAVABIN=$(which java 2>/dev/null)
 [ ! -z "$JAVABIN" ] && {
-    setcap 'cap_net_bind_service=+ep' $(readlink -f "$JAVABIN")
+    setcap 'cap_net_bind_service=+ep' $(realpath /usr/java/latest)
 }
