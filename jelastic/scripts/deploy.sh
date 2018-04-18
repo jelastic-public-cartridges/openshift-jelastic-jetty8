@@ -49,7 +49,8 @@ function _deploy(){
      chown -R jelastic:jelastic "${WEBROOT}"
      rm -rf ${download_dir}
      set -f;
-     service cartridge restart 2>>/dev/null 1>>/dev/null;
+     [[ "$UID" != '0' ]] && SUDO="sudo" || SUDO=""
+     ${SUDO} service cartridge restart 2>>/dev/null 1>>/dev/null;
 }
 
 function _undeploy(){
